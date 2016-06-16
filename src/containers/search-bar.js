@@ -27,7 +27,7 @@ class SearchBar extends Component {
     return (
       <form className='ui form' onSubmit={this.onFormSubmit}>
         <div className='ui icon input fluid'>
-          <input placeholder='Search for a Pokemon!' value={this.state.term} onChange={this.onInputChange} />
+          <input placeholder='Search for a Pokémon!' value={this.state.term} onChange={this.onInputChange} />
           <i className='search icon'></i>
         </div>
       </form>

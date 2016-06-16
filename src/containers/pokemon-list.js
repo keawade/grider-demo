@@ -44,7 +44,7 @@ class PokemonList extends Component {
       <table className='ui large striped table '>
         <thead>
           <tr>
-            <th>Pokemon</th>
+            <th>Pokémon</th>
             <th>Type</th>
             <th>Another category</th>
             <th>Another category</th>
