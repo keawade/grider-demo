@@ -1,14 +1,26 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
-import Chart from '../components/chart'
-import GoogleMap from '../components/google-map'
 
 class PokemonList extends Component {
+  constructor(props) {
+    super(props)
+
+    this.renderPokemon = this.renderPokemon.bind(this)
+    this.renderType = this.renderType.bind(this)
+  }
+  
+  renderType(type) {
+    const style = `type ${type}`
+    const tagContent = type.toUpperCase()
+    return (
+      <div className={style} >{tagContent}</div>
+    )
+  }
+  
   renderPokemon (pokemonData) {
-    const name = pokemonData.forms.map(form => form.name)
-    const types = pokemonData.types.map(type => type.type.name)
+    const name = pokemonData.forms[0].name
+    const types = pokemonData.types.map(thing => thing.type.name)
     const spritePath = pokemonData.sprites.front_default
-    console.log(types)
 
     return (
       <tr key={name}>
@@ -16,7 +28,9 @@ class PokemonList extends Component {
           <img src={spritePath} />
           {name}
         </td>
-        <td>{types[0]} | {types[1]}</td>
+        <td>
+          {types.map(this.renderType)}
+        </td>
         <td>{name}</td>
         <td>{name}</td>
       </tr>
