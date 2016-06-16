@@ -13,33 +13,35 @@ class PokemonList extends Component {
     const style = `type ${type}`
     const tagContent = type.toUpperCase()
     return (
-      <div className={style} >{tagContent}</div>
+      <span className={style} >{tagContent}</span>
     )
   }
   
   renderPokemon (pokemonData) {
-    const name = pokemonData.forms[0].name
-    const types = pokemonData.types.map(thing => thing.type.name)
-    const spritePath = pokemonData.sprites.front_default
+    if(pokemonData) {
+      const name = toTitleCase(pokemonData.forms[0].name)
+      const types = pokemonData.types.map(thing => thing.type.name)
+      const spritePath = pokemonData.sprites.front_default
 
-    return (
-      <tr key={name}>
-        <td>
-          <img src={spritePath} />
-          {name}
-        </td>
-        <td>
-          {types.map(this.renderType)}
-        </td>
-        <td>{name}</td>
-        <td>{name}</td>
-      </tr>
-    )
+      return (
+        <tr key={name}>
+          <td>
+            <div>{name}</div>
+            <img src={spritePath} />
+          </td>
+          <td>
+            {types.map(this.renderType)}
+          </td>
+          <td>{name}</td>
+          <td>{name}</td>
+        </tr>
+      )
+    }
   }
 
   render() {
     return (
-      <table className='table table-hover'>
+      <table className='ui large striped table '>
         <thead>
           <tr>
             <th>Pokemon</th>
@@ -54,6 +56,11 @@ class PokemonList extends Component {
       </table>
     )
   }
+}
+
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 }
 
 function mapStateToProps (state) {

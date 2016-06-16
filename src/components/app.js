@@ -5,7 +5,7 @@ import PokemonList from '../containers/pokemon-list'
 export default class App extends Component {
   render () {
     return (
-      <div>
+      <div className='ui container'>
         <SearchBar />
         <PokemonList />
       </div>

@@ -25,11 +25,11 @@ class SearchBar extends Component {
 
   render () {
     return (
-      <form className='input-group' onSubmit={this.onFormSubmit}>
-        <input placeholder='Search for a Pokemon!' className='form-control' value={this.state.term} onChange={this.onInputChange} />
-        <span className='input-group-btn'>
-          <button className='btn btn-primary'>Go!</button>
-        </span>
+      <form className='ui form' onSubmit={this.onFormSubmit}>
+        <div className='ui icon input fluid'>
+          <input placeholder='Search for a Pokemon!' value={this.state.term} onChange={this.onInputChange} />
+          <i className='search icon'></i>
+        </div>
       </form>
     )
   }
