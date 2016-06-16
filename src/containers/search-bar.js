@@ -26,9 +26,9 @@ class SearchBar extends Component {
   render () {
     return (
       <form className='input-group' onSubmit={this.onFormSubmit}>
-        <input placeholder='Location' className='form-control' value={this.state.term} onChange={this.onInputChange} />
+        <input placeholder='Search for a Pokemon!' className='form-control' value={this.state.term} onChange={this.onInputChange} />
         <span className='input-group-btn'>
-          <button className='btn btn-primary'>Submit</button>
+          <button className='btn btn-primary'>Go!</button>
         </span>
       </form>
     )

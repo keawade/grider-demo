@@ -7,11 +7,6 @@ td, th {
   text-align: center !important;
 }
 
-td:first-of-type {
-  height: 200px;
-  width: 250px;
-}
-
 .type {
 	margin: 10px;
 	padding: 5px 8px 5px 8px;
