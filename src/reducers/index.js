@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import WeatherReducer from './reducer-weather'
+import PokemonReducer from './reducer-pokemon'
 
 const rootReducer = combineReducers({
-  weather: WeatherReducer
+  pokemon: PokemonReducer
 })
 
 export default rootReducer
