@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import SearchBar from '../containers/search-bar'
-import PokemonList from '../containers/pokemon-list'
 
 export default class App extends Component {
   render () {
     return (
       <div className='ui container'>
         <SearchBar />
-        <PokemonList />
+        {this.props.children}
       </div>
     )
   }
