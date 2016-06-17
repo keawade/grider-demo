@@ -5,33 +5,19 @@ import { fetchPokemon } from '../actions/index'
 
 import pokemonList from '../pokemon'
 
-const ITEMS = pokemonList
-const KEYS = ['name']
-const SEARCH_KEY = 'name'
-
 class SearchBar extends Component {
   constructor (props) {
     super(props)
 
-    this.state = { term: '' }
-
-    this.onInputChange = this.onInputChange.bind(this)
-    this.onFormSubmit = this.onFormSubmit.bind(this)
-    this.generateList = this.generateList.bind(this)
+    this.selectItem = this.selectItem.bind(this)
   }
 
   componentDidMount () {
     $('#pokemon-search').dropdown()
   }
 
-  onInputChange (event) {
-    this.setState({term: event.target.value})
-  }
-
-  onFormSubmit (event) {
-    event.preventDefault()
-    this.props.fetchPokemon(this.state.term)
-    this.setState({ term: '' })
+  selectItem (event) {
+    this.props.fetchPokemon(event.target.value)
   }
 
   generateList (pokemon) {
@@ -42,7 +28,7 @@ class SearchBar extends Component {
 
   render () {
     return (
-      <select className='ui fluid search selection dropdown' id='pokemon-search'>
+      <select className='ui fluid search selection dropdown' id='pokemon-search' onChange={this.selectItem}>
         <option value=''>Search for a Pokemon!</option>
         {pokemonList.map(this.generateList)}
       </select>

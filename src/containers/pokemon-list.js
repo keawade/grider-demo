@@ -5,7 +5,7 @@ class PokemonList extends Component {
   constructor(props) {
     super(props)
 
-    this.renderPokemon = this.renderPokemon.bind(this)
+    //this.renderPokemon = this.renderPokemon.bind(this)
     this.renderType = this.renderType.bind(this)
   }
   
@@ -13,33 +13,21 @@ class PokemonList extends Component {
     const style = `type ${type}`
     const tagContent = type.toUpperCase()
     return (
-      <span className={style} >{tagContent}</span>
+      <span key={tagContent} className={style} >{tagContent}</span>
     )
-  }
-  
-  renderPokemon (pokemonData) {
-    if(pokemonData) {
-      const name = toTitleCase(pokemonData.forms[0].name)
-      const types = pokemonData.types.map(thing => thing.type.name)
-      const spritePath = pokemonData.sprites.front_default
-
-      return (
-        <tr key={name}>
-          <td>
-            <div>{name}</div>
-            <img src={spritePath} />
-          </td>
-          <td>
-            {types.map(this.renderType)}
-          </td>
-          <td>{name}</td>
-          <td>{name}</td>
-        </tr>
-      )
-    }
   }
 
   render() {
+    console.log(this.props.pokemon)
+    if (isEmpty(this.props.pokemon)) {
+      var name = ''
+      var types = []
+      var spritePath = ''
+    } else {
+      var name = toTitleCase(this.props.pokemon.forms[0].name)
+      var types = this.props.pokemon.types.map(thing => thing.type.name)
+      var spritePath = this.props.pokemon.sprites.front_default
+    }
     return (
       <table className='ui large striped table '>
         <thead>
@@ -51,11 +39,30 @@ class PokemonList extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.pokemon.map(this.renderPokemon)}
+          <tr>
+            <td>
+              <div>{name}</div>
+              <img src={spritePath} />
+            </td>
+            <td>
+              {types.map(this.renderType)}
+            </td>
+            <td>{name}</td>
+            <td>{name}</td>
+          </tr>
         </tbody>
       </table>
     )
   }
+}
+
+function isEmpty(object) {
+  for(var key in object) {
+    if(object.hasOwnProperty(key)){
+      return false;
+    }
+  }
+  return true;
 }
 
 function toTitleCase(str)
