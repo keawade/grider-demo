@@ -8,14 +8,12 @@ class Search extends Component {
 
   static get defaultProps () {
     return {
-      ItemElement: 'a',
-      classPrefix: 'ui search'
+      ItemElement: 'a'
     }
   }
 
   static get propTypes () {
     return {
-      classPrefix: PropTypes.string,
       items: PropTypes.array.isRequired,
       searchKey: PropTypes.string,
       keys: PropTypes.array,
@@ -35,20 +33,26 @@ class Search extends Component {
   }
 
   changeInput (e) {
-    this.refs.autocomplete.className = `${this.props.classPrefix}__menu ${this.props.classPrefix}__menu--open`
     let searchValue = this.refs.searchInput.value
 
-    let result = SearchItemInArrayObjects(this.props.items, searchValue, this.props.searchKey)
+    if (searchValue) {
+      this.refs.autocomplete.className = 'results search-open'
 
-    this.setState({matchingItems: result})
+      let result = SearchItemInArrayObjects(this.props.items, searchValue, this.props.searchKey)
 
-    if (this.props.onChange !== undefined) {
-      this.props.onChange(e, result)
+      this.setState({matchingItems: result})
+
+      if (this.props.onChange !== undefined) {
+        this.props.onChange(e, result)
+      }
+    }
+    else {
+      this.refs.autocomplete.className = 'results search-closed'
     }
   }
 
   selectAutoComplete (e) {
-    this.refs.autocomplete.className = `${this.props.classPrefix}__menu ${this.props.classPrefix}__menu--hidden`
+    this.refs.autocomplete.className = 'results search-closed'
     let result
     if (e.currentTarget.children.length) {
       result = e.currentTarget.children[0].innerHTML
@@ -56,6 +60,7 @@ class Search extends Component {
       result = e.currentTarget.innerHTML
     }
     this.refs.searchInput.value = result
+    this.refs.searchInput.parentElement.parentElement.parentElement.submit()
 
     if (this.props.onClick !== undefined) {
       this.props.onClick(e, result)
@@ -64,27 +69,24 @@ class Search extends Component {
 
   render () {
     const { ItemElement } = this.props
-    const inputClassName = `prompt`
-    const menuClassName = `results`
 
     let items = this.state.matchingItems.map((item, i) => {
-    
-    return (
-      <div key={i}
-          className='item'
-          onClick={this.selectAutoComplete.bind(this)}>
-        {
-          this.props.keys.map((itemKey, j) => {
-            return (
-              <ItemElement key={j}>
-              { item[itemKey] }
-              </ItemElement>
-            )
-          })
-        }
-      </div>
-    )
-  })
+      return (
+        <div key={i}
+            className='item'
+            onClick={this.selectAutoComplete.bind(this)}>
+          {
+            this.props.keys.map((itemKey, j) => {
+              return (
+                <ItemElement key={j}>
+                { item[itemKey] }
+                </ItemElement>
+              )
+            })
+          }
+        </div>
+      )
+    })
 
     return (
       <div>
@@ -92,7 +94,7 @@ class Search extends Component {
           <input type='text' placeholder='Search for a Pokémon!' ref='searchInput' onKeyUp={this.changeInput.bind(this)} />
           <i className='search icon'></i>
         </div>
-        <div className={menuClassName} ref='autocomplete'>
+        <div className='results search-closed' ref='autocomplete'>
           <div className='ui segment'>
             <div className='ui relaxed selection list'>
               {items}
@@ -106,15 +108,15 @@ class Search extends Component {
 
 module.exports = Search
 
-    var SearchItemInArrayObjects = function (items, input, searchKey) {
-      if (input.trim() === '' || searchKey === undefined) {
-        return []
-      }
-      var reg = new RegExp(input, 'i')
+var SearchItemInArrayObjects = function (items, input, searchKey) {
+  if (input.trim() === '' || searchKey === undefined) {
+    return []
+  }
+  var reg = new RegExp('\\b' + input, 'i')
 
-      return items.filter(function (item) {
-        if (reg.test(item[searchKey])) {
-          return item
-        }
-      })
+  return items.filter(function (item) {
+    if (reg.test(item[searchKey])) {
+      return item
     }
+  })
+}

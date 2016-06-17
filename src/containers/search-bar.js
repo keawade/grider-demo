@@ -3,6 +3,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchPokemon } from '../actions/index'
 
+import Search from '../components/search'
+import pokemonList from '../pokemon'
+
+const ITEMS = pokemonList
+const KEYS = ['name']
+const SEARCH_KEY = 'name'
+
 class SearchBar extends Component {
   constructor (props) {
     super(props)
@@ -26,10 +33,7 @@ class SearchBar extends Component {
   render () {
     return (
       <form className='ui form' onSubmit={this.onFormSubmit}>
-        <div className='ui icon input fluid'>
-          <input placeholder='Search for a Pokémon!' value={this.state.term} onChange={this.onInputChange} />
-          <i className='search icon'></i>
-        </div>
+        <Search items={ITEMS} keys={KEYS} searchKey={SEARCH_KEY} />
       </form>
     )
   }

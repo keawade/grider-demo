@@ -107,37 +107,10 @@ td, th {
 	border: 1px solid #4924A1;
 }
 
-.react-search {
-  margin: 0;
-  font-size: 150%;
-  font-weight: 200;
-  line-height: 1.5;
-}
-
-.react-search__input {
-  color: #666;
-  width: 100%;
-  padding: 1em;
-}
-
-.react-search__menu-items {
-  list-style-type: none;
-  padding: 0em;
-  margin: 0em;
-}
-
-.react-search__menu-item a:hover,
-.react-search__menu-item a:visited {
-  font-weight: bold;
-}
-
-.react-search__menu--open {
-  visibility: visible;
+.search-open {
+  display: default;
   z-index: 2;
-  background: #fff;
-  border: 1px solid #b7b7b7;
 }
-
-.react-search__menu--hidden {
-  visibility: hidden;
+.search-closed {
+	display: none;
 }

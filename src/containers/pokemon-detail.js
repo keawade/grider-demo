@@ -10,7 +10,6 @@ const SEARCH_KEY = 'name'
 class PokemonDetail extends Component {
   constructor(props) {
     super(props)
-    console.log(pokemonList)
   }
 
   render() {
