@@ -60,7 +60,8 @@ class Search extends Component {
       result = e.currentTarget.innerHTML
     }
     this.refs.searchInput.value = result
-    this.refs.searchInput.parentElement.parentElement.parentElement.submit()
+    var search = new Event('submit')
+    this.refs.searchInput.parentElement.parentElement.parentElement.dispatchEvent(search)
 
     if (this.props.onClick !== undefined) {
       this.props.onClick(e, result)

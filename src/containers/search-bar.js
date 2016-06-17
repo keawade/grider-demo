@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchPokemon } from '../actions/index'
 
-import Search from '../components/search'
 import pokemonList from '../pokemon'
 
 const ITEMS = pokemonList
@@ -18,6 +17,11 @@ class SearchBar extends Component {
 
     this.onInputChange = this.onInputChange.bind(this)
     this.onFormSubmit = this.onFormSubmit.bind(this)
+    this.generateList = this.generateList.bind(this)
+  }
+
+  componentDidMount () {
+    $('#pokemon-search').dropdown()
   }
 
   onInputChange (event) {
@@ -30,11 +34,18 @@ class SearchBar extends Component {
     this.setState({ term: '' })
   }
 
+  generateList (pokemon) {
+    return (
+      <option key={pokemon.id} value={pokemon.name}>{pokemon.name}</option>
+    )
+  }
+
   render () {
     return (
-      <form className='ui form' onSubmit={this.onFormSubmit}>
-        <Search items={ITEMS} keys={KEYS} searchKey={SEARCH_KEY} />
-      </form>
+      <select className='ui fluid search selection dropdown' id='pokemon-search'>
+        <option value=''>Search for a Pokemon!</option>
+        {pokemonList.map(this.generateList)}
+      </select>
     )
   }
 }
