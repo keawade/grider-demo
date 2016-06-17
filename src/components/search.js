@@ -106,15 +106,15 @@ class Search extends Component {
 
 module.exports = Search
 
-var SearchItemInArrayObjects = function (items, input, searchKey) {
-  if (input.trim() === '' || searchKey === undefined) {
-    return []
-  }
-  var reg = new RegExp(input.split('').join('\\w*').replace(/\W/, ''), 'i')
+    var SearchItemInArrayObjects = function (items, input, searchKey) {
+      if (input.trim() === '' || searchKey === undefined) {
+        return []
+      }
+      var reg = new RegExp(input, 'i')
 
-  return items.filter(function (item) {
-    if (reg.test(item[searchKey])) {
-      return item
+      return items.filter(function (item) {
+        if (reg.test(item[searchKey])) {
+          return item
+        }
+      })
     }
-  })
-}
