@@ -1,170 +1,362 @@
-module.exports = [{
-    "name": "fighting",
-    "damage_relations": {
-        "half_damage_from": ["rock", "bug", "dark"],
-        "no_damage_from": [],
-        "half_damage_to": ["flying", "poison", "bug", "psychic", "fairy"],
-        "double_damage_from": ["flying", "psychic", "fairy"],
-        "no_damage_to": ["ghost"],
-        "double_damage_to": ["normal", "rock", "steel", "ice", "dark"]
-    }
-}, {
-    "name": "bug",
-    "damage_relations": {
-        "half_damage_from": ["fighting", "ground", "grass"],
-        "no_damage_from": [],
-        "half_damage_to": ["fighting", "flying", "poison", "ghost", "steel", "fire", "fairy"],
-        "double_damage_from": ["flying", "rock", "fire"],
-        "no_damage_to": [],
-        "double_damage_to": ["grass", "psychic", "dark"]
-    }
-}, {
-    "name": "normal",
-    "damage_relations": {
-        "half_damage_from": [],
-        "no_damage_from": ["ghost"],
-        "half_damage_to": ["rock", "steel"],
-        "double_damage_from": ["fighting"],
-        "no_damage_to": ["ghost"],
-        "double_damage_to": []
-    }
-}, {
-    "name": "ground",
-    "damage_relations": {
-        "half_damage_from": ["poison", "rock", "electric"],
-        "half_damage_to": ["bug", "grass"],
-        "double_damage_from": ["water", "grass", "ice"],
-        "no_damage_to": ["flying"],
-        "double_damage_to": ["poison", "rock", "steel", "fire", "electric"]
-    }
-}, {
-    "name": "water",
-    "damage_relations": {
-        "half_damage_from": ["steel", "fire", "water", "ice"],
-        "no_damage_from": [],
-        "half_damage_to": ["water", "grass", "dragon"],
-        "double_damage_from": ["grass", "electric"],
-        "no_damage_to": [],
-        "double_damage_to": ["ground", "rock", "fire"]
-    }
-}, {
-    "name": "poison",
-    "damage_relations": {
-        "half_damage_from": ["fighting", "poison", "bug", "grass", "fairy"],
-        "no_damage_from": [],
-        "half_damage_to": ["poison", "ground", "rock", "ghost"],
-        "double_damage_from": ["ground", "psychic"],
-        "no_damage_to": ["steel"],
-        "double_damage_to": ["grass", "fairy"]
-    }
-}, {
-    "name": "psychic",
-    "damage_relations": {
-        "half_damage_from": ["fighting", "psychic"],
-        "no_damage_from": [],
-        "half_damage_to": ["steel", "psychic"],
-        "double_damage_from": ["bug", "ghost", "dark"],
-        "no_damage_to": ["dark"],
-        "double_damage_to": ["fighting", "poison"]
-    }
-}, {
-    "name": "fire",
-    "damage_relations": {
-        "half_damage_from": ["bug", "steel", "fire", "grass", "ice", "fairy"],
-        "no_damage_from": [],
-        "half_damage_to": ["rock", "fire", "water", "dragon"],
-        "double_damage_from": ["ground", "rock", "water"],
-        "no_damage_to": [],
-        "double_damage_to": ["bug", "steel", "grass", "ice"]
-    }
-}, {
-    "name": "grass",
-    "damage_relations": {
-        "half_damage_from": ["ground", "water", "grass", "electric"],
-        "no_damage_from": [],
-        "half_damage_to": ["flying", "poison", "bug", "steel", "fire", "grass", "dragon"],
-        "double_damage_from": ["flying", "poison", "bug", "fire", "ice"],
-        "no_damage_to": [],
-        "double_damage_to": ["ground", "rock", "water"]
-    }
-}, {
-    "name": "dragon",
-    "damage_relations": {
-        "half_damage_from": ["fire", "water", "grass", "electric"],
-        "no_damage_from": [],
-        "half_damage_to": ["steel"],
-        "double_damage_from": ["ice", "dragon", "fairy"],
-        "no_damage_to": ["fairy"],
-        "double_damage_to": ["dragon"]
-    }
-}, {
-    "name": "ghost",
-    "damage_relations": {
-        "half_damage_from": ["poison", "bug"],
-        "no_damage_from": ["normal", "fighting"],
-        "half_damage_to": ["dark"],
-        "double_damage_from": ["ghost", "dark"],
-        "no_damage_to": ["normal"],
-        "double_damage_to": ["ghost", "psychic"]
-    }
-}, {
-    "name": "dark",
-    "damage_relations": {
-        "half_damage_from": ["ghost", "dark"],
-        "no_damage_from": ["psychic"],
-        "half_damage_to": ["fighting", "dark", "fairy"],
-        "double_damage_from": ["fighting", "bug", "fairy"],
-        "no_damage_to": [],
-        "double_damage_to": ["ghost", "psychic"]
-    }
-}, {
-    "name": "flying",
-    "damage_relations": {
-        "half_damage_from": ["fighting", "bug", "grass"],
-        "no_damage_from": ["ground"],
-        "half_damage_to": ["rock", "steel", "electric"],
-        "double_damage_from": ["rock", "electric", "ice"],
-        "no_damage_to": [],
-        "double_damage_to": ["fighting", "bug", "grass"]
-    }
-}, {
-    "name": "electric",
-    "damage_relations": {
-        "half_damage_from": ["flying", "steel", "electric"],
-        "no_damage_from": [],
-        "half_damage_to": ["grass", "electric", "dragon"],
-        "double_damage_from": ["ground"],
-        "no_damage_to": ["ground"],
-        "double_damage_to": ["flying", "water"]
-    }
-}, {
-    "name": "steel",
-    "damage_relations": {
-        "half_damage_from": ["normal", "flying", "rock", "bug", "steel", "grass", "psychic", "ice", "dragon", "fairy"],
-        "no_damage_from": ["poison"],
-        "half_damage_to": ["steel", "fire", "water", "electric"],
-        "double_damage_from": ["fighting", "ground", "fire"],
-        "no_damage_to": [],
-        "double_damage_to": ["rock", "ice", "fairy"]
-    }
-}, {
-    "name": "ice",
-    "damage_relations": {
-        "half_damage_from": ["ice"],
-        "no_damage_from": [],
-        "half_damage_to": ["steel", "fire", "water", "ice"],
-        "double_damage_from": ["fighting", "rock", "steel", "fire"],
-        "no_damage_to": [],
-        "double_damage_to": ["flying", "ground", "grass", "dragon"]
-    }
-}, {
-    "name": "rock",
-    "damage_relations": {
-        "half_damage_from": ["normal", "flying", "poison", "fire"],
-        "no_damage_from": [],
-        "half_damage_to": ["fighting", "ground", "steel"],
-        "double_damage_from": ["fighting", "ground", "steel", "water", "grass"],
-        "no_damage_to": [],
-        "double_damage_to": ["flying", "bug", "fire", "ice"]
-    }
-}]
+module.exports = {
+  normal: {
+    normal: 1,
+    fire: 1,
+    water: 1,
+    electric: 1,
+    grass: 1,
+    ice: 1,
+    fighting: 1,
+    poison: 1,
+    ground: 1,
+    flying: 1,
+    psychic: 1,
+    bug: 1,
+    rock: 0.5,
+    ghost: 0,
+    dragon: 1,
+    dark: 1,
+    steel: 0.5,
+    fairy: 1
+  },
+  fire: {
+    normal: 1,
+    fire: 0.5,
+    water: 0.5,
+    electric: 1,
+    grass: 2,
+    ice: 2,
+    fighting: 1,
+    poison: 1,
+    ground: 1,
+    flying: 1,
+    psychic: 1,
+    bug: 2,
+    rock: 0.5,
+    ghost: 1,
+    dragon: 0.5,
+    dark: 1,
+    steel: 2,
+    fairy: 1
+  },
+  water: {
+    normal: 1,
+    fire: 2,
+    water: 0.5,
+    electric: 1,
+    grass: 0.5,
+    ice: 1,
+    fighting: 1,
+    poison: 1,
+    ground: 2,
+    flying: 1,
+    psychic: 1,
+    bug: 1,
+    rock: 2,
+    ghost: 1,
+    dragon: 0.5,
+    dark: 1,
+    steel: 1,
+    fairy: 1
+  },
+  electric: {
+    normal: 1,
+    fire: 1,
+    water: 2,
+    electric: 0.5,
+    grass: 0.5,
+    ice: 1,
+    fighting: 1,
+    poison: 1,
+    ground: 0,
+    flying: 2,
+    psychic: 1,
+    bug: 1,
+    rock: 1,
+    ghost: 1,
+    dragon: 0.5,
+    dark: 1,
+    steel: 1,
+    fairy: 1
+  },
+  grass: {
+    normal: 1,
+    fire: 0.5,
+    water: 2,
+    electric: 1,
+    grass: 0.5,
+    ice: 1,
+    fighting: 1,
+    poison: 0.5,
+    ground: 2,
+    flying: 0.5,
+    psychic: 1,
+    bug: 0.5,
+    rock: 2,
+    ghost: 1,
+    dragon: 0.5,
+    dark: 1,
+    steel: 0.5,
+    fairy: 1
+  },
+  ice: {
+    normal: 1,
+    fire: 0.5,
+    water: 0.5,
+    electric: 1,
+    grass: 2,
+    ice: 0.5,
+    fighting: 1,
+    poison: 1,
+    ground: 2,
+    flying: 2,
+    psychic: 1,
+    bug: 1,
+    rock: 1,
+    ghost: 1,
+    dragon: 2,
+    dark: 1,
+    steel: 0.5,
+    fairy: 1
+  },
+  fighting: {
+    normal: 2,
+    fire: 1,
+    water: 1,
+    electric: 1,
+    grass: 1,
+    ice: 2,
+    fighting: 1,
+    poison: 0.5,
+    ground: 1,
+    flying: 0.5,
+    psychic: 0.5,
+    bug: 0.5,
+    rock: 2,
+    ghost: 0,
+    dragon: 1,
+    dark: 2,
+    steel: 2,
+    fairy: 0.5
+  },
+  poison: {
+    normal: 1,
+    fire: 1,
+    water: 1,
+    electric: 1,
+    grass: 2,
+    ice: 1,
+    fighting: 1,
+    poison: 0.5,
+    ground: 0.5,
+    flying: 1,
+    psychic: 1,
+    bug: 1,
+    rock: 0.5,
+    ghost: 0.5,
+    dragon: 1,
+    dark: 1,
+    steel: 0,
+    fairy: 2
+  },
+  ground: {
+    normal: 1,
+    fire: 2,
+    water: 1,
+    electric: 2,
+    grass: 0.5,
+    ice: 1,
+    fighting: 1,
+    poison: 2,
+    ground: 1,
+    flying: 0,
+    psychic: 1,
+    bug: 0.5,
+    rock: 2,
+    ghost: 1,
+    dragon: 1,
+    dark: 1,
+    steel: 2,
+    fairy: 1
+  },
+  flying: {
+    normal: 1,
+    fire: 1,
+    water: 1,
+    electric: 0.5,
+    grass: 2,
+    ice: 1,
+    fighting: 2,
+    poison: 1,
+    ground: 1,
+    flying: 1,
+    psychic: 1,
+    bug: 2,
+    rock: 0.5,
+    ghost: 1,
+    dragon: 1,
+    dark: 1,
+    steel: 0.5,
+    fairy: 1
+  },
+  psychic: {
+    normal: 1,
+    fire: 1,
+    water: 1,
+    electric: 1,
+    grass: 1,
+    ice: 1,
+    fighting: 2,
+    poison: 2,
+    ground: 1,
+    flying: 1,
+    psychic: 0.5,
+    bug: 1,
+    rock: 1,
+    ghost: 1,
+    dragon: 1,
+    dark: 0,
+    steel: 0.5,
+    fairy: 1
+  },
+  bug: {
+    normal: 1,
+    fire: 0.5,
+    water: 1,
+    electric: 1,
+    grass: 2,
+    ice: 1,
+    fighting: 0.5,
+    poison: 0.5,
+    ground: 1,
+    flying: 0.5,
+    psychic: 2,
+    bug: 1,
+    rock: 1,
+    ghost: 0.5,
+    dragon: 1,
+    dark: 2,
+    steel: 0.5,
+    fairy: 0.5
+  },
+  rock: {
+    normal: 1,
+    fire: 2,
+    water: 1,
+    electric: 1,
+    grass: 1,
+    ice: 2,
+    fighting: 0.5,
+    poison: 1,
+    ground: 0.5,
+    flying: 2,
+    psychic: 1,
+    bug: 2,
+    rock: 1,
+    ghost: 1,
+    dragon: 1,
+    dark: 1,
+    steel: 0.5,
+    fairy: 1
+  },
+  ghost: {
+    normal: 0,
+    fire: 1,
+    water: 1,
+    electric: 1,
+    grass: 1,
+    ice: 1,
+    fighting: 1,
+    poison: 1,
+    ground: 1,
+    flying: 1,
+    psychic: 2,
+    bug: 1,
+    rock: 1,
+    ghost: 2,
+    dragon: 1,
+    dark: 0.5,
+    steel: 1,
+    fairy: 1
+  },
+  dragon: {
+    normal: 1,
+    fire: 1,
+    water: 1,
+    electric: 1,
+    grass: 1,
+    ice: 1,
+    fighting: 1,
+    poison: 1,
+    ground: 1,
+    flying: 1,
+    psychic: 1,
+    bug: 1,
+    rock: 1,
+    ghost: 1,
+    dragon: 2,
+    dark: 1,
+    steel: 0.5,
+    fairy: 0
+  },
+  dark: {
+    normal: 1,
+    fire: 1,
+    water: 1,
+    electric: 1,
+    grass: 1,
+    ice: 1,
+    fighting: 0.5,
+    poison: 1,
+    ground: 1,
+    flying: 1,
+    psychic: 2,
+    bug: 1,
+    rock: 1,
+    ghost: 2,
+    dragon: 1,
+    dark: 0.5,
+    steel: 1,
+    fairy: 0.5
+  },
+  steel: {
+    normal: 1,
+    fire: 0.5,
+    water: 0.5,
+    electric: 0.5,
+    grass: 1,
+    ice: 2,
+    fighting: 1,
+    poison: 1,
+    ground: 1,
+    flying: 1,
+    psychic: 1,
+    bug: 1,
+    rock: 2,
+    ghost: 1,
+    dragon: 1,
+    dark: 1,
+    steel: 0.5,
+    fairy: 2
+  },
+  fairy: {
+    normal: 1,
+    fire: 0.5,
+    water: 1,
+    electric: 1,
+    grass: 1,
+    ice: 1,
+    fighting: 2,
+    poison: 0.5,
+    ground: 1,
+    flying: 1,
+    psychic: 1,
+    bug: 1,
+    rock: 1,
+    ghost: 1,
+    dragon: 2,
+    dark: 2,
+    steel: 0.5,
+    fairy: 1
+  }
+}

@@ -2158,7 +2158,4 @@ module.exports = [{
 }, {
     "id": 720,
     "name": "hoopa"
-}, {
-    "id": 721,
-    "name": "volcanion"
 }]
