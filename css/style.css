@@ -107,6 +107,11 @@ td, th {
 	border: 1px solid #4924A1;
 }
 
+.fairy {
+	background-color: #EE99AC;
+	border: 1px solid #F4BDC9;
+}
+
 .search-open {
 	display: default;
 	z-index: 2;
