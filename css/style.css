@@ -108,9 +108,12 @@ td, th {
 }
 
 .search-open {
-  display: default;
-  z-index: 2;
+	display: default;
+	z-index: 2;
 }
 .search-closed {
+	display: none;
+}
+.poke-hidden {
 	display: none;
 }

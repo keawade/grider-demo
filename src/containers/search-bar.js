@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchPokemon } from '../actions/index'
 
+import { findKey } from 'lodash'
+import { toTitleCase } from '../helpers'
 import pokemonList from '../pokemon'
 
 class SearchBar extends Component {
@@ -17,12 +19,12 @@ class SearchBar extends Component {
   }
 
   selectItem (event) {
-    this.props.fetchPokemon(event.target.value)
+    this.props.fetchPokemon(parseInt(findKey(pokemonList, ['name', event.target.value]), 10) + 1)
   }
 
   generateList (pokemon) {
     return (
-      <option key={pokemon.id} value={pokemon.name}>{pokemon.name}</option>
+      <option key={pokemon.id} value={pokemon.name}>{toTitleCase(pokemon.name)}</option>
     )
   }
 

@@ -3,11 +3,6 @@ import { Route, IndexRoute } from 'react-router'
 
 import App from './components/app'
 
-import PokemonList from './containers/pokemon-list'
-
-
 export default (
-  <Route path='/' component={App}>
-    <IndexRoute component={PokemonList} />
-  </Route>
+  <Route path='/' component={App} />
 )
