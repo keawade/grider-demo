@@ -72,7 +72,11 @@ class History extends Component {
   }
 
   selectItem (event) {
-    this.props.movePokemon(parseInt(event.target.parentElement.id, 10) + 1)
+    if (event.target.id) {
+      this.props.movePokemon(parseInt(event.target.id, 10) + 1)
+    } else {
+      this.props.movePokemon(parseInt(event.target.parentElement.id, 10) + 1)
+    }
     window.scrollTo(0,0)
   }
 
@@ -91,10 +95,14 @@ class History extends Component {
             <img src={spritePath} />
           </div>
           <div className='content'>
-            <a className='header' id={index} onClick={this.selectItem}>{id} - {name}</a>
+            <div className='header'>{id} - {name}</div>
             <div className='description'>
               {types.map(this.renderType)}
             </div>
+          </div>
+          <div className="ui bottom attached button" id={index} onClick={this.selectItem}>
+            <i className="search icon"></i>
+            Make Focus
           </div>
         </div>
       </div>
