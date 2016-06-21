@@ -31,7 +31,7 @@ class SearchBar extends Component {
   render () {
     return (
       <select className='ui fluid search selection dropdown' id='pokemon-search' onChange={this.selectItem}>
-        <option value=''>Search for a Pokemon!</option>
+        <option value=''>Search for a Pokémon!</option>
         {pokemonList.map(this.generateList)}
       </select>
     )
