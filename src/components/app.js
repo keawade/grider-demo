@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { isEmpty } from '../helpers.js'
 import SearchBar from '../containers/search-bar'
 import PokemonDetail from '../containers/pokemon-detail'
+import History from '../containers/history'
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +15,8 @@ class App extends Component {
       <div className='ui container'>
         <SearchBar />
         <PokemonDetail />
+        <div className='ui divider' />
+        <History />
         <div className='ui segment'>
           <h3 className='header'>Thanks</h3>
           <p>Thanks to <a href='http://phalt.co/' target='_blank'>Paul Hallett</a> and <a href='http://pokeapi.co/' target='_blank'>Pokéapi</a> for the data resouces.</p>

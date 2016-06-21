@@ -4,21 +4,20 @@ import { toTitleCase, isEmpty } from '../helpers.js'
 import leftPad from 'left-pad'
 import pokemonList from '../pokemon'
 import pokemonTypes from '../pokemon-types'
+import pokemonTypeColors from '../pokemon-types-colors'
 
-
-class PokemonDetail extends Component {
+class History extends Component {
   constructor(props) {
     super(props)
     this.renderType = this.renderType.bind(this)
-    this.renderWeaknesses = this.renderWeaknesses.bind(this)
-    this.renderResistances = this.renderResistances.bind(this)
-    this.renderImmunities = this.renderImmunities.bind(this)
+    this.renderListItem = this.renderListItem.bind(this)
   }
   renderType(type) {
-    const style = `type ${type}`
     const tagContent = type.toUpperCase()
+    const primaryColor = { color: pokemonTypeColors[type].primary }
+    const secondaryColor = { color: pokemonTypeColors[type].secondary }
     return (
-      <span className={style} key={tagContent} >{tagContent}</span>
+      <i key={tagContent} className="circle icon" style={primaryColor}></i>
     )
   }
   calculateStrengths(types) {
@@ -68,82 +67,41 @@ class PokemonDetail extends Component {
     }
     return strengths
   }
-  renderWeaknesses(strengths) {
-    let weaknesses = []
-    for(let item in strengths) {
-      if(strengths[item] >= 2) {
-        weaknesses.push(item)
-      }
-    }
-    return (
-      <div>
-        {weaknesses.map(this.renderType)}
-      </div>
-    )
-  }
-  renderResistances(strengths) {
-    let resistances = []
-    for(let item in strengths) {
-      if(0.25 == strengths[item] || strengths[item] == 0.5) {
-        resistances.push(item)
-      }
-    }
-    return (
-      <div>
-        {resistances.map(this.renderType)}
-      </div>
-    )
-  }
-  renderImmunities(strengths) {
-    let immunities = []
-    for(let item in strengths) {
-      if(strengths[item] == 0) {
-        immunities.push(item)
-      }
-    }
-    return (
-      <div>
-        {immunities.map(this.renderType)}
-      </div>
-    )
-  }
-  render() {
-    var id
-    var name = ''
-    var types = []
-    var spritePath = ''
-    var display = 'ui segment poke-hidden'
 
-    if (!isEmpty(this.props.pokemon[0])) {
-      id = leftPad(this.props.pokemon[0].id, 3, 0)
-      name = toTitleCase(pokemonList[parseInt(id, 10) - 1].name)
-      types = this.props.pokemon[0].types.map(thing => thing.type.name)
-      spritePath = `http://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`
-      display = 'ui segment'
-    }
-
-    var strengths = this.calculateStrengths(types)
-
+  renderListItem(itemDetails) {
+    const id = leftPad(itemDetails.id, 3, 0)
+    const name = toTitleCase(pokemonList[parseInt(id, 10) - 1].name)
+    const types = itemDetails.types.map(thing => thing.type.name)
+    const spritePath = `http://assets.pokemon.com/assets/cms2/img/pokedex/detail/${id}.png`
+    const strengths = this.calculateStrengths(types)
+    
     return (
-      <div className={display}>
-        <h1 className='ui center aligned dividing huge header'>#{id} - {name}</h1>
-        <div className='ui two column divided grid'>
-          <div className='row'>
-            <div className='column'>
-              <img src={spritePath} />
-            </div>
-            <div className='column'>
-              <h3 className='ui dividing header'>Type</h3>
-              {types.map(this.renderType)}
-              <h3 className='ui dividing header'>Weaknesses</h3>
-              {this.renderWeaknesses(strengths)}
-              <h3 className='ui dividing header'>Resistances</h3>
-              {this.renderResistances(strengths)}
-              <h3 className='ui dividing header'>Immunities</h3>
-              {this.renderImmunities(strengths)}
-            </div>
+      <div className='ui column'>
+        <div className='ui center aligned segment'>
+          <h3 className='ui header'>{id} - {name}</h3>
+          <img src={spritePath} />
+          <div>
+            {types.map(this.renderType)}
           </div>
         </div>
+      </div>
+    )
+  }
+
+  render() {
+    if (this.props.pokemon.length <= 1) {
+      return <div className='poke-hidden' />
+    }
+    const cardList = this.props.pokemon.slice(1)
+
+    console.log(cardList)
+
+    return (
+      <div>
+        <div className='ui four column grid'>
+          {cardList.map(this.renderListItem)}
+        </div>
+        <div className='ui divider' />
       </div>
     )
   }
@@ -153,4 +111,4 @@ function mapStateToProps (state) {
   return { pokemon: state.pokemon }
 }
 
-export default connect(mapStateToProps)(PokemonDetail)
+export default connect(mapStateToProps)(History)

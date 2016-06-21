@@ -1,3 +1,8 @@
+@font-face {
+	font-family: pokemon;
+	src: url(fonts/joystix-monospace.ttf);
+}
+
 body {
 	padding: 1em;
 }
@@ -16,10 +21,11 @@ td, th {
 	-moz-border-radius: 6px;
 	-o-border-radius: 6px;
 	font-size: 13px;
-	font-family: "helvetica neue", Helvetica, Verdana, sans-serif;
+	font-family: pokemon;
 	color: #FFF;
 	background-color: #68A090;
 	border: 1px solid #44685E;
+	text-shadow: 0.5px 0.5px 2px black;
 }
 
 .normal {
