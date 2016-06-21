@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { movePokemon } from '../actions/index'
 import { toTitleCase, isEmpty } from '../helpers.js'
 import leftPad from 'left-pad'
 import pokemonList from '../pokemon'
@@ -11,6 +13,7 @@ class History extends Component {
     super(props)
     this.renderType = this.renderType.bind(this)
     this.renderListItem = this.renderListItem.bind(this)
+    this.selectItem = this.selectItem.bind(this)
   }
   renderType(type) {
     const tagContent = type.toUpperCase()
@@ -68,7 +71,13 @@ class History extends Component {
     return strengths
   }
 
-  renderListItem(itemDetails) {
+  selectItem (event) {
+    this.props.movePokemon(parseInt(event.target.parentElement.id, 10) + 1)
+    window.scrollTo(0,0)
+  }
+
+  renderListItem(itemDetails, i) {
+    const index = i
     const id = leftPad(itemDetails.id, 3, 0)
     const name = toTitleCase(pokemonList[parseInt(id, 10) - 1].name)
     const types = itemDetails.types.map(thing => thing.type.name)
@@ -76,12 +85,16 @@ class History extends Component {
     const strengths = this.calculateStrengths(types)
     
     return (
-      <div className='ui column'>
-        <div className='ui center aligned segment'>
-          <h3 className='ui header'>{id} - {name}</h3>
-          <img src={spritePath} />
-          <div>
-            {types.map(this.renderType)}
+      <div key={id} className='ui column'>
+        <div className='ui card'>
+          <div className='image'>
+            <img src={spritePath} />
+          </div>
+          <div className='content'>
+            <a className='header' id={index} onClick={this.selectItem}>{id} - {name}</a>
+            <div className='description'>
+              {types.map(this.renderType)}
+            </div>
           </div>
         </div>
       </div>
@@ -93,8 +106,6 @@ class History extends Component {
       return <div className='poke-hidden' />
     }
     const cardList = this.props.pokemon.slice(1)
-
-    console.log(cardList)
 
     return (
       <div>
@@ -111,4 +122,8 @@ function mapStateToProps (state) {
   return { pokemon: state.pokemon }
 }
 
-export default connect(mapStateToProps)(History)
+function mapDispatchToProps (dispatch) {
+  return bindActionCreators({ movePokemon }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(History)
