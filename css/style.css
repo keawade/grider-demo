@@ -128,3 +128,6 @@ td, th {
 .poke-hidden {
 	display: none;
 }
+.poke-height-mod {
+	min-height: 20em;
+}

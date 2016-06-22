@@ -16,9 +16,11 @@ class SearchBar extends Component {
 
   componentDidMount () {
     $('#pokemon-search').dropdown()
+    this.props.fetchPokemon(Math.floor(Math.random() * (pokemonList.length + 1)))
   }
 
   selectItem (event) {
+    document.getElementById('detail-loader').className = ''
     this.props.fetchPokemon(parseInt(findKey(pokemonList, ['name', event.target.value]), 10) + 1)
   }
 

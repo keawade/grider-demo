@@ -14,6 +14,11 @@ class PokemonDetail extends Component {
     this.renderResistances = this.renderResistances.bind(this)
     this.renderImmunities = this.renderImmunities.bind(this)
   }
+  componentWillUpdate () {
+    if(document.getElementById('detail-loader')) {
+      document.getElementById('detail-loader').className = 'poke-hidden'
+    }
+  }
   renderType(type) {
     const style = `type ${type}`
     const tagContent = type.toUpperCase()
@@ -112,20 +117,29 @@ class PokemonDetail extends Component {
     var name = ''
     var types = []
     var spritePath = ''
-    var display = 'ui segment poke-hidden'
 
     if (!isEmpty(this.props.pokemon[0])) {
       id = leftPad(this.props.pokemon[0].id, 3, 0)
       name = toTitleCase(pokemonList[parseInt(id, 10) - 1].name)
       types = this.props.pokemon[0].types.map(thing => thing.type.name)
       spritePath = `http://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png`
-      display = 'ui segment'
+    } else {
+      return (
+        <div className='ui basic segment poke-height-mod'>
+          <div className='ui active text loader'>Loading</div>
+        </div>
+      )
     }
 
     var strengths = this.calculateStrengths(types)
 
     return (
-      <div className={display}>
+      <div className='ui segment'>
+        <div className='poke-hidden' id='detail-loader'>
+          <div className="ui active inverted dimmer">
+            <div className="ui text loader">Loading</div>
+          </div>
+        </div>
         <h1 className='ui center aligned dividing huge header'>#{id} - {name}</h1>
         <div className='ui two column divided grid'>
           <div className='row'>

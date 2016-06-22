@@ -72,11 +72,8 @@ class History extends Component {
   }
 
   selectItem (event) {
-    if (event.target.id) {
-      this.props.movePokemon(parseInt(event.target.id, 10) + 1)
-    } else {
-      this.props.movePokemon(parseInt(event.target.parentElement.id, 10) + 1)
-    }
+    console.log(event.target)
+    this.props.movePokemon(parseInt(event.target.id, 10) + 1)
     window.scrollTo(0,0)
   }
 
@@ -90,21 +87,19 @@ class History extends Component {
     
     return (
       <div key={id} className='ui column'>
-        <div className='ui card'>
-          <div className='image'>
-            <img src={spritePath} />
-          </div>
-          <div className='content'>
-            <div className='header'>{id} - {name}</div>
-            <div className='description'>
-              {types.map(this.renderType)}
+        <a id={index} onClick={this.selectItem}>
+          <div className='ui card' id={index}>
+            <div className='image' id={index}>
+              <img src={spritePath} id={index} />
+            </div>
+            <div className='content' id={index}>
+              <div className='header' id={index}>{id} - {name}</div>
+              <div className='description' id={index}>
+                {types.map(this.renderType)}
+              </div>
             </div>
           </div>
-          <div className="ui bottom attached button" id={index} onClick={this.selectItem}>
-            <i className="search icon"></i>
-            Make Focus
-          </div>
-        </div>
+        </a>
       </div>
     )
   }
@@ -117,6 +112,7 @@ class History extends Component {
 
     return (
       <div>
+        <div className='ui divider' />
         <div className='ui four column grid'>
           {cardList.map(this.renderListItem)}
         </div>
