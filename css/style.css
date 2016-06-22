@@ -131,3 +131,6 @@ td, th {
 .poke-height-mod {
 	min-height: 20em;
 }
+.card {
+	cursor: pointer;
+}

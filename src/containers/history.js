@@ -116,7 +116,6 @@ class History extends Component {
         <div className='ui four column grid'>
           {cardList.map(this.renderListItem)}
         </div>
-        <div className='ui divider' />
       </div>
     )
   }

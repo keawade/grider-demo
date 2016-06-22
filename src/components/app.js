@@ -18,7 +18,6 @@ class App extends Component {
           <PokemonDetail />
           <History />
         </div>
-
       </div>
     )
   }

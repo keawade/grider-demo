@@ -134,29 +134,36 @@ class PokemonDetail extends Component {
     var strengths = this.calculateStrengths(types)
 
     return (
-      <div className='ui segment'>
+      <div className='ui segments'>
         <div className='poke-hidden' id='detail-loader'>
           <div className="ui active inverted dimmer">
             <div className="ui text loader">Loading</div>
           </div>
         </div>
-        <h1 className='ui center aligned dividing huge header'>#{id} - {name}</h1>
-        <div className='ui two column divided grid'>
-          <div className='row'>
-            <div className='column'>
-              <img src={spritePath} />
-            </div>
-            <div className='column'>
-              <h3 className='ui dividing header'>Type</h3>
-              {types.map(this.renderType)}
-              <h3 className='ui dividing header'>Weaknesses</h3>
-              {this.renderWeaknesses(strengths)}
-              <h3 className='ui dividing header'>Resistances</h3>
-              {this.renderResistances(strengths)}
-              <h3 className='ui dividing header'>Immunities</h3>
-              {this.renderImmunities(strengths)}
+        <div className='ui center aligned segment'>
+          <h1 className='ui huge header'>#{id} - {name}</h1>
+        </div>
+        <div className='ui segment'>
+          <div className='ui two column divided grid'>
+            <div className='row'>
+              <div className='column'>
+                <img src={spritePath} />
+              </div>
+              <div className='column'>
+                <h3 className='ui dividing header'>Type</h3>
+                {types.map(this.renderType)}
+                <h3 className='ui dividing header'>Weaknesses</h3>
+                {this.renderWeaknesses(strengths)}
+                <h3 className='ui dividing header'>Resistances</h3>
+                {this.renderResistances(strengths)}
+                <h3 className='ui dividing header'>Immunities</h3>
+                {this.renderImmunities(strengths)}
+              </div>
             </div>
           </div>
+        </div>
+        <div className='ui center aligned segment'>
+          Fork me on <a href='https://github.com/keawade/pokedata'>GitHub</a>
         </div>
       </div>
     )
