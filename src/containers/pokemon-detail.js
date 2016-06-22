@@ -135,11 +135,6 @@ class PokemonDetail extends Component {
 
     return (
       <div className='ui segments'>
-        <div className='poke-hidden' id='detail-loader'>
-          <div className="ui active inverted dimmer">
-            <div className="ui text loader">Loading</div>
-          </div>
-        </div>
         <div className='ui center aligned segment'>
           <h1 className='ui huge header'>#{id} - {name}</h1>
         </div>
@@ -164,6 +159,11 @@ class PokemonDetail extends Component {
         </div>
         <div className='ui center aligned segment'>
           Fork me on <a href='https://github.com/keawade/pokedata'>GitHub</a>
+        </div>
+        <div className='poke-hidden' id='detail-loader'>
+          <div className="ui active inverted dimmer">
+            <div className="ui text loader">Loading</div>
+          </div>
         </div>
       </div>
     )
