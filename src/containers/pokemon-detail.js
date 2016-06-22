@@ -158,7 +158,7 @@ class PokemonDetail extends Component {
           </div>
         </div>
         <div className='ui center aligned segment'>
-          Fork me on <a href='https://github.com/keawade/pokedata'>GitHub</a>
+          Fork me on <a href='https://github.com/keawade/pokedata' target='_blank'>GitHub</a>
         </div>
         <div className='poke-hidden' id='detail-loader'>
           <div className="ui active inverted dimmer">
