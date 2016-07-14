@@ -139,7 +139,7 @@ class PokemonDetail extends Component {
           <h1 className='ui huge header'>#{id} - {name}</h1>
         </div>
         <div className='ui segment'>
-          <div className='ui two column divided grid'>
+          <div className='ui two column divided stackable grid'>
             <div className='row'>
               <div className='column'>
                 <img src={spritePath} />
