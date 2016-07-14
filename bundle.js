@@ -28973,7 +28973,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createElement(_reactRouter.Route, { path: '/', component: _app2.default });
+	exports.default = _react2.default.createElement(_reactRouter.Route, { path: '/*', component: _app2.default });
 
 /***/ },
 /* 274 */
