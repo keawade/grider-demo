@@ -14,11 +14,9 @@ class App extends Component {
     return (
       <div>
         <div className='ui container'>
-          <div className='segments'>
-            <SearchBar />
-            <PokemonDetail />
-            <History />
-          </div>
+          <SearchBar />
+          <PokemonDetail />
+          <History />
         </div>
       </div>
     )

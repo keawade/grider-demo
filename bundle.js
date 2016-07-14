@@ -29033,13 +29033,9 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'ui container' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'segments' },
-	            _react2.default.createElement(_searchBar2.default, null),
-	            _react2.default.createElement(_pokemonDetail2.default, null),
-	            _react2.default.createElement(_history2.default, null)
-	          )
+	          _react2.default.createElement(_searchBar2.default, null),
+	          _react2.default.createElement(_pokemonDetail2.default, null),
+	          _react2.default.createElement(_history2.default, null)
 	        )
 	      );
 	    }
@@ -48615,7 +48611,7 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { key: id, className: 'ui column' },
+	        { key: id, className: 'column' },
 	        _react2.default.createElement(
 	          'a',
 	          { id: index, onClick: this.selectItem },
@@ -48661,7 +48657,7 @@
 	        _react2.default.createElement('div', { className: 'ui divider' }),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'ui four column grid' },
+	          { className: 'ui four column stackable grid container' },
 	          cardList.map(this.renderListItem)
 	        )
 	      );

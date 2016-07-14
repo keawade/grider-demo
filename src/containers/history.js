@@ -86,21 +86,21 @@ class History extends Component {
     const strengths = this.calculateStrengths(types)
     
     return (
-      <div key={id} className='ui column'>
-        <a id={index} onClick={this.selectItem}>
-          <div className='ui card' id={index}>
-            <div className='image' id={index}>
-              <img src={spritePath} id={index} />
-            </div>
-            <div className='content' id={index}>
-              <div className='header' id={index}>{id} - {name}</div>
-              <div className='description' id={index}>
-                {types.map(this.renderType)}
+        <div key={id} className='column'>
+          <a id={index} onClick={this.selectItem}>
+            <div className='ui card' id={index}>
+              <div className='image' id={index}>
+                <img src={spritePath} id={index} />
+              </div>
+              <div className='content' id={index}>
+                <div className='header' id={index}>{id} - {name}</div>
+                <div className='description' id={index}>
+                  {types.map(this.renderType)}
+                </div>
               </div>
             </div>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
     )
   }
 
@@ -113,7 +113,7 @@ class History extends Component {
     return (
       <div>
         <div className='ui divider' />
-        <div className='ui four column grid'>
+        <div className='ui four column stackable grid container'>
           {cardList.map(this.renderListItem)}
         </div>
       </div>
